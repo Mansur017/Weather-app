@@ -7,7 +7,7 @@ import "./reset.css";
 function App() {
     const [city, setCity] = useState("Miami");
     const [weatherData, setWeatherData] = useState({});
-    const [loader, setLoader] = useState(true);
+    const [loader, setLoader] = useState(true); 
 
     const fetchWeatherData = (city) => {
         const API_KEY = "bcb7715d81e54bb99c7171945231510";
