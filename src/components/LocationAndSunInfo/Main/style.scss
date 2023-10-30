@@ -1,0 +1,85 @@
+body {
+    overflow-y: hidden;
+}
+.main-block {
+    margin: 0 80px;
+    position: relative;
+    .times-of-day {
+        color: #fff;
+        text-shadow: -1.5099999904632568px 2.259999990463257px 0.75px
+            rgba(0, 0, 0, 0.1);
+        font-family: 'Inter';
+        font-size: 26px;
+        font-style: normal;
+        font-weight: 200;
+        line-height: 120%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+        p {
+            margin-top: -60px;
+        }
+    }
+    .clocks {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 35px;
+        div {
+            width: 100px;
+            height: 210px;
+            flex-shrink: 0;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.26);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            p {
+                color: var(--main-white, #fff);
+                text-align: right;
+                font-family: 'Inter';
+                font-size: 28px;
+                font-style: normal;
+                font-weight: 300;
+                line-height: normal;
+            }
+            span {
+                color: #ebebeb;
+                font-family: 'Inter';
+                font-size: 20px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+        .golden-hour {
+            width: 120px;
+            height: 245px;
+            flex-shrink: 0;
+            margin-top: -50px;
+        }
+    }
+    nav {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: #fff;
+        font-family: 'Inter';
+        font-size: 24px;
+        font-style: italic;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.26);
+        position: absolute;
+        text-align: center;
+        top: 91%;
+        left: 98%;
+    }
+    hr {
+        width: 90%;
+        border: 1px solid rgba(255, 255, 255, 0.477);
+        margin-top: 50px;
+    }
+}

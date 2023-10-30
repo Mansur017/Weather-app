@@ -1,0 +1,27 @@
+.search-component {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    border: 0.1px solid #ffffff58;
+    background: linear-gradient(
+        117deg,
+        rgba(255, 255, 255, 0.48) 0%,
+        rgba(255, 255, 255, 0.12) 99.45%
+    );
+    backdrop-filter: blur(50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 200px;
+    cursor: pointer;
+    img {
+        width: 21px;
+        height: auto;
+    }
+    button{
+        background  : none;
+        border: none;
+        cursor: pointer;
+    }
+}

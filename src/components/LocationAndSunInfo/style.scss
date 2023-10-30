@@ -1,0 +1,11 @@
+.location-sun-info {
+    background: linear-gradient(
+        170deg,
+        #9fbfdfb1 0%,
+        hwb(229 44% 4% / 0.778) 100%
+    );
+    box-shadow: -5px -5px 250px 0px rgba(255, 255, 255, 0.02) inset;
+    backdrop-filter: blur(21px);
+    width: 40%;
+    min-height: 100vh;
+}
