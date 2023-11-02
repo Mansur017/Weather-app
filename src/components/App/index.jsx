@@ -5,13 +5,13 @@ import "./style.scss";
 import "./reset.css";
 
 function App() {
-    const [city, setCity] = useState("Miami");
+    const [city, setCity] = useState("Moscow");
     const [weatherData, setWeatherData] = useState({});
     const [loader, setLoader] = useState(true); 
 
     const fetchWeatherData = (city) => {
-        const API_KEY = "bcb7715d81e54bb99c7171945231510";
-        const url = `http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`;
+        const API_KEY = "a07c89a41ec748feb57161415230111";
+        const url = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`;
 
         fetch(url)
             .then(response => response.json())

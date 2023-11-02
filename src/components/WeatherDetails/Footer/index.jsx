@@ -23,189 +23,207 @@ function Footer({ cityProps, setWeatherData, isCelsius }) {
     const [showRemainingDays, setShowRemainingDays] = useState(false);
 
     const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-    const API_KEY = "bcb7715d81e54bb99c7171945231510";
+    const API_KEY = "a07c89a41ec748feb57161415230111";
     const city = cityProps;
-    const url = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=7`;
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=7`;
 
     let imgSrc;
 
+ 
     useEffect(() => {
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                if (!data.error) {
-                    const forecastArray = data.forecast.forecastday.map(item => {
-                        switch (item.day.condition.text) {
-                            
-                        case "Sunny":
-                            imgSrc = Sunny;
-                            break;
-                        case "Partly cloudy":
-                            imgSrc = PartyCloudy;
-                            break;
-                        case "Cloudy":
-                            imgSrc = Cloudy;
-                            break;
-                        case "Overcast":
-                            imgSrc = Cloudy;
-                            break;
-                        case "Mist":
-                            imgSrc = Mist;
-                            break;
-                        case "Patchy rain possible":
-                            imgSrc = PatchyRainPossible;
-                            break;
-                        case "Patchy snow possible":
-                            imgSrc = PatchySnowPossible;
-                            break;
-                        case "Patchy sleet possible":
-                            imgSrc = PatchyRainPossible;
-                            break;
-                        case "Patchy freezing drizzle possible":
-                            imgSrc = HeavySnow;
-                            break;
-                        case "Thundery outbreaks possible":
-                            imgSrc = Storm;
-                            break;
-                        case "Blowing snow":
-                            imgSrc = Blizzard;
-                            break;
-                        case "Blizzard":
-                            imgSrc = Blizzard; 
-                            break;
-                        case "Fog":
-                            imgSrc = Mist; 
-                            break;
-                        case "Freezing fog":
-                            imgSrc = FreezingFog;
-                            break;
-                        case "Patchy light drizzle":
-                            imgSrc = PatchyLightDrizzle;
-                            break;
-                        case "Light drizzle":
-                            imgSrc = PatchyLightDrizzle;
-                            break;
-                        case "Freezing drizzle":
-                            imgSrc = FreezingDrizzle;
-                            break;
-                        case "Heavy freezing drizzle":
-                            imgSrc = Snow;
-                            break;
-                        case "Patchy light rain":
-                            imgSrc = FreezingDrizzle;
-                            break;
-                        case "Light rain":
-                            imgSrc = FreezingDrizzle; 
-                            break;
-                        case "Moderate rain at times":
-                            imgSrc = PatchyRainPossible;
-                            break;
-                        case "Moderate rain":
-                            imgSrc = PatchyRainPossible;
-                            break;
-                        case "Heavy rain at times":
-                            imgSrc = Rain;
-                            break;
-                        case "Heavy rain":
-                            imgSrc = Rain;
-                            break;
-                        case "Light freezing rain":
-                            imgSrc = Rain;
-                            break;
-                        case "Moderate or heavy freezing rain":
-                            imgSrc = Rain;
-                            break;
-                        case "Light sleet":
-                            imgSrc = FreezingDrizzle;
-                            break;
-                        case "Moderate or heavy sleet":
-                            imgSrc = FreezingDrizzle;
-                            break;
-                        case "Patchy light snow":
-                            imgSrc = FreezingDrizzle;
-                            break;
-                        case "Light snow":
-                            imgSrc = FreezingDrizzle; 
-                            break;
-                        case "Patchy moderate snow":
-                            imgSrc = Snow;
-                            break;
-                        case "Moderate snow":
-                            imgSrc = Snow;
-                            break;
-                        case "Patchy heavy snow":
-                            imgSrc = HeavySnow;
-                            break;
-                        case "Heavy snow":
-                            imgSrc = HeavySnow;
-                            break;
-                        case "Ice pellets":
-                            imgSrc = HeavySnow;
-                            break;
-                        case "Light rain shower":
-                            imgSrc = PatchyLightDrizzle;
-                            break;
-                        case "Moderate or heavy rain shower":
-                            imgSrc = Rain;
-                            break;
-                        case "Torrential rain shower":
-                            imgSrc = Rain;
-                            break;
-                        case "Light sleet showers":
-                            imgSrc = Rain;
-                            break;
-                        case "Moderate or heavy sleet showers":
-                            imgSrc = Rain;
-                            break;
-                        case "Light snow showers":
-                            imgSrc = FreezingDrizzle;
-                            break;
-                        case "Moderate or heavy snow showers":
-                            imgSrc = FreezingFog;
-                            break;
-                        case "Light showers of ice pellets":
-                            imgSrc = FreezingFog;
-                            break;
-                        case "Moderate or heavy showers of ice pellets":
-                            imgSrc = FreezingFog;
-                            break;
-                        case "Patchy light rain with thunder":
-                            imgSrc = RainWithThunder;
-                            break;
-                        case "Moderate or heavy rain with thunder":
-                            imgSrc = RainWithThunder;
-                            break;
-                        case "Patchy light snow with thunder":
-                            imgSrc = RainWithThunder;
-                            break;
-                        default:
-                            imgSrc = Cloudy;
+        if (city) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.error) {
+                        const forecastArray = data.forecast.forecastday.map(item => {
+                            switch (item.day.condition.text) {
+
+                            case "Sunny":
+                                imgSrc = Sunny;
+                                break;
+                            case "Partly cloudy":
+                                imgSrc = PartyCloudy;
+                                break;
+                            case "Cloudy":
+                                imgSrc = Cloudy;
+                                break;
+                            case "Overcast":
+                                imgSrc = Cloudy;
+                                break;
+                            case "Mist":
+                                imgSrc = Mist;
+                                break;
+                            case "Patchy rain possible":
+                                imgSrc = PatchyRainPossible;
+                                break;
+                            case "Patchy snow possible":
+                                imgSrc = PatchySnowPossible;
+                                break;
+                            case "Patchy sleet possible":
+                                imgSrc = PatchyRainPossible;
+                                break;
+                            case "Patchy freezing drizzle possible":
+                                imgSrc = HeavySnow;
+                                break;
+                            case "Thundery outbreaks possible":
+                                imgSrc = Storm;
+                                break;
+                            case "Blowing snow":
+                                imgSrc = Blizzard;
+                                break;
+                            case "Blizzard":
+                                imgSrc = Blizzard; 
+                                break;
+                            case "Fog":
+                                imgSrc = Mist; 
+                                break;
+                            case "Freezing fog":
+                                imgSrc = FreezingFog;
+                                break;
+                            case "Patchy light drizzle":
+                                imgSrc = PatchyLightDrizzle;
+                                break;
+                            case "Light drizzle":
+                                imgSrc = PatchyLightDrizzle;
+                                break;
+                            case "Freezing drizzle":
+                                imgSrc = FreezingDrizzle;
+                                break;
+                            case "Heavy freezing drizzle":
+                                imgSrc = Snow;
+                                break;
+                            case "Patchy light rain":
+                                imgSrc = FreezingDrizzle;
+                                break;
+                            case "Light rain":
+                                imgSrc = FreezingDrizzle; 
+                                break;
+                            case "Moderate rain at times":
+                                imgSrc = PatchyRainPossible;
+                                break;
+                            case "Moderate rain":
+                                imgSrc = PatchyRainPossible;
+                                break;
+                            case "Heavy rain at times":
+                                imgSrc = Rain;
+                                break;
+                            case "Heavy rain":
+                                imgSrc = Rain;
+                                break;
+                            case "Light freezing rain":
+                                imgSrc = Rain;
+                                break;
+                            case "Moderate or heavy freezing rain":
+                                imgSrc = Rain;
+                                break;
+                            case "Light sleet":
+                                imgSrc = FreezingDrizzle;
+                                break;
+                            case "Moderate or heavy sleet":
+                                imgSrc = FreezingDrizzle;
+                                break;
+                            case "Patchy light snow":
+                                imgSrc = FreezingDrizzle;
+                                break;
+                            case "Light snow":
+                                imgSrc = FreezingDrizzle; 
+                                break;
+                            case "Patchy moderate snow":
+                                imgSrc = Snow;
+                                break;
+                            case "Moderate snow":
+                                imgSrc = Snow;
+                                break;
+                            case "Patchy heavy snow":
+                                imgSrc = HeavySnow;
+                                break;
+                            case "Heavy snow":
+                                imgSrc = HeavySnow;
+                                break;
+                            case "Ice pellets":
+                                imgSrc = HeavySnow;
+                                break;
+                            case "Light rain shower":
+                                imgSrc = PatchyLightDrizzle;
+                                break;
+                            case "Moderate or heavy rain shower":
+                                imgSrc = Rain;
+                                break;
+                            case "Torrential rain shower":
+                                imgSrc = Rain;
+                                break;
+                            case "Light sleet showers":
+                                imgSrc = Rain;
+                                break;
+                            case "Moderate or heavy sleet showers":
+                                imgSrc = Rain;
+                                break;
+                            case "Light snow showers":
+                                imgSrc = FreezingDrizzle;
+                                break;
+                            case "Moderate or heavy snow showers":
+                                imgSrc = FreezingFog;
+                                break;
+                            case "Light showers of ice pellets":
+                                imgSrc = FreezingFog;
+                                break;
+                            case "Moderate or heavy showers of ice pellets":
+                                imgSrc = FreezingFog;
+                                break;
+                            case "Patchy light rain with thunder":
+                                imgSrc = RainWithThunder;
+                                break;
+                            case "Moderate or heavy rain with thunder":
+                                imgSrc = RainWithThunder;
+                                break;
+                            case "Patchy light snow with thunder":
+                                imgSrc = RainWithThunder;
+                                break;
+                            default:
+                                imgSrc = Cloudy;
+                            }
+                            return {
+                                graduis: Math.round(item.day.avgtemp_c),
+                                fahrenheit: Math.round(item.day.avgtemp_f),
+                                day: new Date(item.date).toLocaleString("en-US", { weekday: "short" }),
+                                imgSrc: imgSrc,
+                            };
+                        });
+                        for (let i = 3; i < 7; i++) {
+                            let fakeDay = {
+                                graduis: forecastArray[i % 3].graduis,
+                                fahrenheit: forecastArray[i % 3].fahrenheit,
+                                day: daysOfWeek[i],
+                                imgSrc: forecastArray[i % 3].imgSrc
+                            };
+                            forecastArray.push(fakeDay);
                         }
-                        return {
-                            graduis: Math.round(item.day.avgtemp_c),
-                            fahrenheit: Math.round(item.day.avgtemp_f),
-                            day: new Date(item.date).toLocaleString("en-US", { weekday: "short" }),
-                            imgSrc: imgSrc,
-                        };
-                    });
-                    setTemperaturesArray(forecastArray);
-                    setWeatherData(data);
-                }
-            });
+                        setTemperaturesArray(forecastArray);
+                        setWeatherData(data);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+       
     }, [url]);
 
     const toggleRemainingDays = () => {
-        setShowRemainingDays(prevState => !prevState); 
+        setShowRemainingDays((prevState) => !prevState);
     };
-
-    let daysToDisplay = [];
     
+    let daysToDisplay = [];
+
     if (showRemainingDays) {
-        daysToDisplay = temperaturesArray.slice(3);
+        daysToDisplay = temperaturesArray.slice(0, 3); 
     } else {
         daysToDisplay = temperaturesArray.slice(0, 4);
     }
-
+    
+    const displayedDaysOfWeek = showRemainingDays ? daysOfWeek.slice(4, 7) : daysOfWeek.slice(0, 4);
+    
     return (
         <div className="footer">
             { daysToDisplay.map((item, index) => {
@@ -213,7 +231,7 @@ function Footer({ cityProps, setWeatherData, isCelsius }) {
                     <div className="footer-forecast-box" key={ index }>
                         <p>{ isCelsius ? `${item.graduis}°C` : `${item.fahrenheit}°F` }</p>
                         <img src={ item.imgSrc } alt="cloud" />
-                        <span>{ daysOfWeek[index + (showRemainingDays ? 3 : 0)] }</span>
+                        <span>{ displayedDaysOfWeek[index] }</span>
                     </div>
                 );
             }) }
@@ -224,6 +242,8 @@ function Footer({ cityProps, setWeatherData, isCelsius }) {
             </div>
         </div>
     );
+    
+    
 }
 
 export default Footer;
